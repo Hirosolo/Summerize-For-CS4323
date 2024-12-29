@@ -388,7 +388,7 @@ When the script is executed with arguments, `$1` will display the first argument
 
 ---
 
-## 2.9 Problem Solutions
+## 2.9 Some Fundemental Problem Solutions
 
 ### Get, Process, and Print Data Entered by User:
 ```bash
@@ -420,3 +420,200 @@ echo "New entry" >> data.txt
 ```
 **Explanation**:  
 The `>>` operator appends the string `"New entry"` to the end of the file `data.txt`.
+
+# Chapter 3: Shell Scripting Control Structures
+
+## 3.1 Conditional Structures
+
+**Definition**: Conditional structures allow you to execute different code blocks based on specific conditions.
+
+### 3.1.1 if Statement
+
+**Syntax**:
+```bash
+if [ condition ]; then
+  # Code to be executed if condition is true
+fi
+```
+
+**Example**:
+```bash
+num=10
+if [ $num -gt 5 ]; then
+  echo "Number is greater than 5"
+fi
+```
+
+**Explanation**:  
+- The if statement checks if the variable num is greater than 5.
+- If the condition is true, the message "Number is greater than 5" is printed.
+
+### 3.1.2 if-else Statement
+
+**Syntax**:
+```bash
+if [ condition ]; then
+  # Code to be executed if condition is true
+else
+  # Code to be executed if condition is false
+fi
+```
+
+**Example**:
+```bash
+num=3
+if [ $num -gt 5 ]; then
+  echo "Number is greater than 5"
+else
+  echo "Number is not greater than 5"
+fi
+```
+
+**Explanation**:  
+- The if statement checks if the variable num is greater than 5.
+- If the condition is true, prints "Number is greater than 5".
+- If the condition is false, prints "Number is not greater than 5".
+
+### 3.1.3 if-elif-else Statement
+
+**Syntax**:
+```bash
+if [ condition1 ]; then
+  # Code to be executed if condition1 is true
+elif [ condition2 ]; then
+  # Code to be executed if condition2 is true
+else
+  # Code to be executed if all conditions are false
+fi
+```
+
+**Example**:
+```bash
+num=7
+if [ $num -gt 10 ]; then
+  echo "Number is greater than 10"
+elif [ $num -gt 5 ]; then
+  echo "Number is greater than 5"
+else
+  echo "Number is less than or equal to 5"
+fi
+```
+
+**Explanation**:  
+- First checks if num is greater than 10.
+- If true, prints "Number is greater than 10".
+- Otherwise, checks if num is greater than 5.
+- If true, prints "Number is greater than 5".
+- Otherwise, prints "Number is less than or equal to 5".
+
+### 3.1.4 Numeric Comparison Operators
+
+**Operators**:  
+- `-eq`: Equal to
+- `-ne`: Not equal to
+- `-gt`: Greater than
+- `-ge`: Greater than or equal to
+- `-lt`: Less than
+- `-le`: Less than or equal to
+
+**Example**:
+```bash
+num1=10
+num2=5
+if [ $num1 -gt $num2 ]; then
+  echo "$num1 is greater than $num2"
+fi
+```
+
+### 3.1.5 String Comparison Operators
+
+**Operators**:  
+- `=`: Equal to
+- `!=`: Not equal to
+- `-z`: String is empty
+- `-n`: String is not empty
+
+**Example**:
+```bash
+string="hello"
+if [ "$string" = "hello" ]; then
+  echo "String is 'hello'"
+fi
+```
+
+### 3.1.6 File Test Operators
+
+**Operators**:  
+- `-f`: File exists
+- `-d`: Directory exists
+- `-r`: File is readable
+- `-w`: File is writable
+- `-x`: File is executable
+
+**Example**:
+```bash
+if [ -f file.txt ]; then
+  echo "File 'file.txt' exists"
+fi
+```
+
+### 3.1.7 Logical Operators
+
+**Operators**:  
+- `-a`: Logical AND
+- `-o`: Logical OR
+
+**Example**:
+```bash
+num1=10
+num2=5
+if [ $num1 -gt 5 -a $num2 -lt 10 ]; then
+  echo "Both conditions are true"
+fi
+```
+
+## 3.2 Loop Structures
+
+**Definition**: Loop structures allow you to repeat a block of code multiple times.
+
+### 3.2.1 for Loop
+
+**Syntax**:
+```bash
+for variable in list; do
+  # Code to be executed for each item in the list
+done
+```
+
+**Example**:
+```bash
+for i in {1..5}; do
+  echo "Iteration $i"
+done
+```
+
+**Explanation**:  
+- The for loop iterates over the numbers 1 to 5.
+- For each iteration, prints "Iteration" followed by the current number.
+
+### 3.2.2 while Loop
+
+**Syntax**:
+```bash
+while [ condition ]; do
+  # Code to be executed as long as condition is true
+done
+```
+
+**Example**:
+```bash
+count=1
+while [ $count -le 5 ]; do
+  echo "Count is $count"
+  ((count++))
+done
+```
+
+**Explanation**:  
+- The while loop continues as long as count is less than or equal to 5.
+- It prints the current count and increments it by 1 in each iteration.
